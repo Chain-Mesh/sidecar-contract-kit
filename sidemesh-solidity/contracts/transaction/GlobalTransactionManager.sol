@@ -38,7 +38,7 @@ interface IGlobalTransactionManager{
     function startNetworkTransaction(
         string memory primaryNetwork,
         uint primaryChain,
-        string memory primaryTxID,
+        address primaryTxSender,
         string memory primaryTxProof)
         external;
 
@@ -275,7 +275,7 @@ contract GlobalTransactionManager is IGlobalTransactionManager{
     function startNetworkTransaction(
         string memory primaryNetwork,
         uint primaryChain,
-        string memory primaryTxID,
+        address primaryTxSender,
         string memory primaryTxProof)
         external{
             require(!Utils.isEmpty(primaryTxProof), Constants.ERROR_PRIMARYTXPROOF);
@@ -283,7 +283,7 @@ contract GlobalTransactionManager is IGlobalTransactionManager{
             require(!Utils.checkAddress(contractC), Constants.ERROR_CONTRACT);
             require(!Utils.isEmpty(functionC), Constants.ERROR_FUNCTION);
 
-            (bool success,) = contractC.call(abi.encodeWithSignature(functionC, primaryTxID, primaryTxProof));
+            (bool success,) = contractC.call(abi.encodeWithSignature(functionC, primaryTxSender, primaryTxProof));
             require(success, Constants.ERROR_FAILED);
         }
     
