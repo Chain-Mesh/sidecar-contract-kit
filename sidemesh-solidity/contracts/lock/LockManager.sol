@@ -11,29 +11,17 @@ import "../sidemesh/Sidemesh.sol";
 interface ILockManager{
     
     function getStateMaybeLocked(
-        string memory key,
-        uint cur,
-        bool isValid,
-        uint status,
-        uint ttlTime)
+        string memory key)
         external view returns(Structs.Lock memory);
     
     function putStateMaybeLocked(
         string memory key,
-        bytes memory value,
-        uint cur,
-        bool isValid,
-        uint status,
-        uint ttlTime)
+        bytes memory value)
         external;
 
     function putLockedStateWithPrimaryLock(
         string memory key,
-        bytes memory value,
-        uint cur,
-        bool isValid,
-        uint status,
-        uint ttlTime)
+        bytes memory value)
         external;
 
     function putLockedStateWithNetworkLock(
@@ -41,11 +29,7 @@ interface ILockManager{
         bytes memory value,
         string memory primaryNetwork,
         uint primaryChain,
-        address primaryTxSender,
-        uint cur,
-        bool isValid,
-        uint status,
-        uint ttlTime)
+        address primaryTxSender)
         external;
 }
 
@@ -74,19 +58,11 @@ contract LockManager is ILockManager, ILockManagerGlobalTransaction{
         sidemesh = ISidemesh(_sidemesh);
     }
 
-    function checkTimeoutLock(Structs.Lock memory lock, uint cur, bool isValid, uint status, uint ttlTime)internal view returns(bool){
+    function checkTimeoutLock(Structs.Lock memory lock)internal view returns(bool){
         string memory network = sidemesh.getNetwork();
         
         require(Utils.equals(lock.primaryPrepareTxId.uri.network, network), Constants.ERROR_SECONDARY_LOCK);
         require(lock.primaryPrepareTxId.uri.chain == block.chainid, Constants.ERROR_WRONG_CHAIN);
-
-        require(isValid, Constants.ERROR_NO_PRIMARY_TX);
-
-        require(
-            Enums.checkCanceledOrCommiteded(status),
-            Constants.ERROR_INVALID_TX_STATUS);
-        
-        require(ttlTime < cur, Constants.ERROR_INVALID_TIME);
 
         return true;
     }
@@ -175,27 +151,18 @@ contract LockManager is ILockManager, ILockManagerGlobalTransaction{
         wSet[hash].push(value);
     }
 
-    function getStateMaybeLocked(
-        string memory key,
-        uint cur,
-        bool isValid,
-        uint status,
-        uint ttlTime)
+    function getStateMaybeLocked(string memory key)
         external view returns(Structs.Lock memory){
             bytes32 keyHash = Utils.hash(abi.encodePacked(key));
 
-            require(checkTimeoutLock(locks[keyHash], cur, isValid, status, ttlTime), Constants.ERROR_EXPIRED_LOCK);
+            require(checkTimeoutLock(locks[keyHash]), Constants.ERROR_EXPIRED_LOCK);
 
             return locks[keyHash];
         }
 
     function putStateMaybeLocked(
         string memory key,
-        bytes memory value,
-        uint cur,
-        bool isValid,
-        uint status,
-        uint ttlTime)
+        bytes memory value)
         external{
             bytes32 keyHash = Utils.hash(abi.encodePacked(key));
 
@@ -204,16 +171,12 @@ contract LockManager is ILockManager, ILockManagerGlobalTransaction{
                 return;
             }
 
-            require(checkTimeoutLock(locks[keyHash], cur, isValid, status, ttlTime), Constants.ERROR_EXPIRED_LOCK);
+            require(checkTimeoutLock(locks[keyHash]), Constants.ERROR_EXPIRED_LOCK);
         }
 
     function putLockedStateWithPrimaryLock(
         string memory key,
-        bytes memory value,
-        uint cur,
-        bool isValid,
-        uint status,
-        uint ttlTime)
+        bytes memory value)
         external{
             string memory network = sidemesh.getNetwork();
             bytes32 keyHash = Utils.hash(abi.encodePacked(key));
@@ -230,7 +193,7 @@ contract LockManager is ILockManager, ILockManagerGlobalTransaction{
                 return;
             }
 
-            require(checkTimeoutLock(locks[keyHash], cur, isValid, status, ttlTime), Constants.ERROR_EXPIRED_LOCK);
+            require(checkTimeoutLock(locks[keyHash]), Constants.ERROR_EXPIRED_LOCK);
         }
 
     function putLockedStateWithNetworkLock(
@@ -238,11 +201,7 @@ contract LockManager is ILockManager, ILockManagerGlobalTransaction{
         bytes memory value,
         string memory primaryNetwork,
         uint primaryChain,
-        address primaryTxSender,
-        uint cur,
-        bool isValid,
-        uint status,
-        uint ttlTime)
+        address primaryTxSender)
         external{
             bytes32 keyHash = Utils.hash(abi.encodePacked(key));
             Structs.TransactionID memory primaryPrepareTxId = Structs.TransactionID(Structs.URI(primaryNetwork, primaryChain), primaryTxSender);
@@ -257,6 +216,6 @@ contract LockManager is ILockManager, ILockManagerGlobalTransaction{
                 return;
             }
 
-            require(checkTimeoutLock(locks[keyHash], cur, isValid, status, ttlTime), Constants.ERROR_EXPIRED_LOCK);
+            require(checkTimeoutLock(locks[keyHash]), Constants.ERROR_EXPIRED_LOCK);
         }
 }

@@ -12,11 +12,6 @@ import "../resource/Register.sol";
 import "../lock/LockManager.sol";
 
 interface IGlobalTransactionManager{
-    function getDataForCheckTimeout(
-        string memory network,
-        uint chain,
-        address sender)
-        external view returns(bool, uint, uint);
         
     function startGlobalTransaction(
         uint ttlHeight,
@@ -101,22 +96,6 @@ contract GlobalTransactionManager is IGlobalTransactionManager{
             }
         }
     }
-
-    function getDataForCheckTimeout(
-        string memory network,
-        uint chain,
-        address sender)
-        external view returns(bool, uint, uint){
-            bytes32 xidKey = Utils.hash(abi.encodePacked(Constants.PREFIX, network, chain, sender));
-            
-            require(globalTransactionStatuses[xidKey].isValid, Constants.ERROR_NO_PRIMARY_TX);
-            
-            return(
-                globalTransactionStatuses[xidKey].isValid,
-                uint(globalTransactionStatuses[xidKey].status),
-                globalTransactions[xidKey].ttlTime
-                );
-        }
 
     function startGlobalTransaction(
         uint ttlHeight,
