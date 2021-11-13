@@ -58,11 +58,16 @@ library Structs{
         bytes updatingState;
         bool isValid;
     }
+    struct NetworkTransactionResponse{
+        TransactionID txId;
+        Enums.NetworkTransactionResponse response;
+        bytes proof;
+    }
 
-    event SIDE_MESH_RESOURCE_REGISTERED_EVENT(
-        string network,
-        uint chain,
-        bytes connection
+    event ResourceRegisteredEvent(
+        URI uri,
+        bytes connection,
+        uint chainid
     );
 
     event PrimaryTransactionPreparedEvent(

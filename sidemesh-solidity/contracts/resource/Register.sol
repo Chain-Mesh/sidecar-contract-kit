@@ -39,7 +39,11 @@ contract Register is IRegister{
             bytes memory uri = abi.encodePacked(Constants.PREFIX, network, chain);
             registeredNetworks[Utils.hash(uri)] = connection;
 
-            emit Structs.SIDE_MESH_RESOURCE_REGISTERED_EVENT(network, chain, Utils.toBytes(connection));
+            emit Structs.ResourceRegisteredEvent(
+                Structs.URI(network, chain),
+                Utils.toBytes(connection),
+                block.chainid
+            );
     }
     
     function resolve(

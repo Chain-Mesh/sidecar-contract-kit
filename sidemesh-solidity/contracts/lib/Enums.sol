@@ -2,6 +2,16 @@
 pragma solidity >=0.7.0 <0.9.0;
 
 library Enums{
+    enum ChainType{
+        FABRIC,
+        BESU
+    }
+
+    enum NetworkTransactionResponse{
+        SUCCESS,
+        FAILED
+    }
+
     enum GlobalTransactionStatusType{
         PRIMARY_TRANSACTION_PREPARED,
         PRIMARY_TRANSACTION_COMMITTED,

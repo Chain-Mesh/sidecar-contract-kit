@@ -28,7 +28,7 @@
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.8.9+commit.e5eed63a\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"getNetwork\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"networkC\",\"type\":\"string\"}],\"name\":\"setNetwork\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"/Users/shri99/WebProjects/sidecar-contract-kit/sidemesh-solidity/contracts/sidemesh/Sidemesh.sol\":\"ISidemesh\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":1000},\"remappings\":[]},\"sources\":{\"/Users/shri99/WebProjects/sidecar-contract-kit/sidemesh-solidity/contracts/lib/Constants.sol\":{\"keccak256\":\"0x39d578a0be02e2651db6e9fabed55c70c4eff6b82f14378077abb538cade620f\",\"license\":\"GPL-3.0\",\"urls\":[\"bzz-raw://5ae6bba23c923d7e0d63f2522b667df913dd3b289eb4f5e995423ec91ddf5453\",\"dweb:/ipfs/QmUjLHaGgrVxbAqcDfwiTGJSjRqfwc3cygNzUsDT9PquLG\"]},\"/Users/shri99/WebProjects/sidecar-contract-kit/sidemesh-solidity/contracts/lib/Utils.sol\":{\"keccak256\":\"0xe3b854a4f60676464dbea16e4b1359f5361c60851d649ba800943f63562393a3\",\"license\":\"GPL-3.0\",\"urls\":[\"bzz-raw://bac24023e8276e08fd3c3d1d255ac5ae89a54955000f7f3d0a9c3ccf6b3d71e7\",\"dweb:/ipfs/QmTY33MpEeY5ecmuVVRs4UV4JWjoCArWqbxK1QV7xPxRch\"]},\"/Users/shri99/WebProjects/sidecar-contract-kit/sidemesh-solidity/contracts/sidemesh/Sidemesh.sol\":{\"keccak256\":\"0x8e07fdde99294b914f735881831f03eacb9b8706eb6b0ee1d10ba2f5ef3ef111\",\"license\":\"GPL-3.0\",\"urls\":[\"bzz-raw://751bc0e06ff421ac21bb9e73f5b14c5b1600ab31b9fde06059a42abf1c4eae8c\",\"dweb:/ipfs/QmaQkYqb5xoEuKD1Gv1oEViRm8L2LTKcBk5BYuvrPZpQ8R\"]}},\"version\":1}",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.9+commit.e5eed63a\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"getNetwork\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"networkC\",\"type\":\"string\"}],\"name\":\"setNetwork\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/sidemesh/Sidemesh.sol\":\"ISidemesh\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":1000},\"remappings\":[]},\"sources\":{\"project:/contracts/lib/Constants.sol\":{\"keccak256\":\"0x39d578a0be02e2651db6e9fabed55c70c4eff6b82f14378077abb538cade620f\",\"license\":\"GPL-3.0\",\"urls\":[\"bzz-raw://5ae6bba23c923d7e0d63f2522b667df913dd3b289eb4f5e995423ec91ddf5453\",\"dweb:/ipfs/QmUjLHaGgrVxbAqcDfwiTGJSjRqfwc3cygNzUsDT9PquLG\"]},\"project:/contracts/lib/Utils.sol\":{\"keccak256\":\"0xe3b854a4f60676464dbea16e4b1359f5361c60851d649ba800943f63562393a3\",\"license\":\"GPL-3.0\",\"urls\":[\"bzz-raw://bac24023e8276e08fd3c3d1d255ac5ae89a54955000f7f3d0a9c3ccf6b3d71e7\",\"dweb:/ipfs/QmTY33MpEeY5ecmuVVRs4UV4JWjoCArWqbxK1QV7xPxRch\"]},\"project:/contracts/sidemesh/Sidemesh.sol\":{\"keccak256\":\"0x8e07fdde99294b914f735881831f03eacb9b8706eb6b0ee1d10ba2f5ef3ef111\",\"license\":\"GPL-3.0\",\"urls\":[\"bzz-raw://751bc0e06ff421ac21bb9e73f5b14c5b1600ab31b9fde06059a42abf1c4eae8c\",\"dweb:/ipfs/QmaQkYqb5xoEuKD1Gv1oEViRm8L2LTKcBk5BYuvrPZpQ8R\"]}},\"version\":1}",
   "bytecode": "0x",
   "deployedBytecode": "0x",
   "immutableReferences": {},
@@ -37,29 +37,29 @@
   "sourceMap": "",
   "deployedSourceMap": "",
   "source": "// SPDX-License-Identifier: GPL-3.0\npragma solidity >=0.7.0 <0.9.0;\n\nimport \"../lib/Utils.sol\";\nimport \"../lib/Constants.sol\";\n\ninterface ISidemesh{\n    function getNetwork()external view returns(string memory);\n    function setNetwork(string memory networkC)external;\n}\n\ncontract Sidemesh is ISidemesh {\n\n    string network;\n\n    function getNetwork()external view returns(string memory){\n            require(Utils.isEmpty(network), Constants.ERROR_NETWORK);\n            return network;\n    }\n\n    function setNetwork(string memory networkC)public{\n        network = networkC;\n    }\n}",
-  "sourcePath": "/Users/shri99/WebProjects/sidecar-contract-kit/sidemesh-solidity/contracts/sidemesh/Sidemesh.sol",
+  "sourcePath": "/home/rxshri99/WebProjects/sidecar-contract-kit/sidemesh-solidity/contracts/sidemesh/Sidemesh.sol",
   "ast": {
-    "absolutePath": "/Users/shri99/WebProjects/sidecar-contract-kit/sidemesh-solidity/contracts/sidemesh/Sidemesh.sol",
+    "absolutePath": "project:/contracts/sidemesh/Sidemesh.sol",
     "exportedSymbols": {
       "Constants": [
         107
       ],
       "ISidemesh": [
-        1916
+        1937
       ],
       "Sidemesh": [
-        1948
+        1969
       ],
       "Utils": [
-        799
+        815
       ]
     },
-    "id": 1949,
+    "id": 1970,
     "license": "GPL-3.0",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 1903,
+        "id": 1924,
         "literals": [
           "solidity",
           ">=",
@@ -73,24 +73,24 @@
         "src": "36:31:8"
       },
       {
-        "absolutePath": "/Users/shri99/WebProjects/sidecar-contract-kit/sidemesh-solidity/contracts/lib/Utils.sol",
+        "absolutePath": "project:/contracts/lib/Utils.sol",
         "file": "../lib/Utils.sol",
-        "id": 1904,
+        "id": 1925,
         "nameLocation": "-1:-1:-1",
         "nodeType": "ImportDirective",
-        "scope": 1949,
-        "sourceUnit": 800,
+        "scope": 1970,
+        "sourceUnit": 816,
         "src": "69:26:8",
         "symbolAliases": [],
         "unitAlias": ""
       },
       {
-        "absolutePath": "/Users/shri99/WebProjects/sidecar-contract-kit/sidemesh-solidity/contracts/lib/Constants.sol",
+        "absolutePath": "project:/contracts/lib/Constants.sol",
         "file": "../lib/Constants.sol",
-        "id": 1905,
+        "id": 1926,
         "nameLocation": "-1:-1:-1",
         "nodeType": "ImportDirective",
-        "scope": 1949,
+        "scope": 1970,
         "sourceUnit": 108,
         "src": "96:30:8",
         "symbolAliases": [],
@@ -103,9 +103,9 @@
         "contractDependencies": [],
         "contractKind": "interface",
         "fullyImplemented": false,
-        "id": 1916,
+        "id": 1937,
         "linearizedBaseContracts": [
-          1916
+          1937
         ],
         "name": "ISidemesh",
         "nameLocation": "138:9:8",
@@ -113,7 +113,7 @@
         "nodes": [
           {
             "functionSelector": "07e4b7e9",
-            "id": 1910,
+            "id": 1931,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
@@ -121,23 +121,23 @@
             "nameLocation": "162:10:8",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1906,
+              "id": 1927,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "172:2:8"
             },
             "returnParameters": {
-              "id": 1909,
+              "id": 1930,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1908,
+                  "id": 1929,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1910,
+                  "scope": 1931,
                   "src": "196:13:8",
                   "stateVariable": false,
                   "storageLocation": "memory",
@@ -146,7 +146,7 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 1907,
+                    "id": 1928,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
                     "src": "196:6:8",
@@ -160,7 +160,7 @@
               ],
               "src": "195:15:8"
             },
-            "scope": 1916,
+            "scope": 1937,
             "src": "153:58:8",
             "stateMutability": "view",
             "virtual": false,
@@ -168,7 +168,7 @@
           },
           {
             "functionSelector": "818edaec",
-            "id": 1915,
+            "id": 1936,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
@@ -176,17 +176,17 @@
             "nameLocation": "225:10:8",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1913,
+              "id": 1934,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1912,
+                  "id": 1933,
                   "mutability": "mutable",
                   "name": "networkC",
                   "nameLocation": "250:8:8",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1915,
+                  "scope": 1936,
                   "src": "236:22:8",
                   "stateVariable": false,
                   "storageLocation": "memory",
@@ -195,7 +195,7 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 1911,
+                    "id": 1932,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
                     "src": "236:6:8",
@@ -210,19 +210,19 @@
               "src": "235:24:8"
             },
             "returnParameters": {
-              "id": 1914,
+              "id": 1935,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "267:0:8"
             },
-            "scope": 1916,
+            "scope": 1937,
             "src": "216:52:8",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "external"
           }
         ],
-        "scope": 1949,
+        "scope": 1970,
         "src": "128:142:8",
         "usedErrors": []
       },
@@ -231,13 +231,13 @@
         "baseContracts": [
           {
             "baseName": {
-              "id": 1917,
+              "id": 1938,
               "name": "ISidemesh",
               "nodeType": "IdentifierPath",
-              "referencedDeclaration": 1916,
+              "referencedDeclaration": 1937,
               "src": "293:9:8"
             },
-            "id": 1918,
+            "id": 1939,
             "nodeType": "InheritanceSpecifier",
             "src": "293:9:8"
           }
@@ -246,10 +246,10 @@
         "contractDependencies": [],
         "contractKind": "contract",
         "fullyImplemented": true,
-        "id": 1948,
+        "id": 1969,
         "linearizedBaseContracts": [
-          1948,
-          1916
+          1969,
+          1937
         ],
         "name": "Sidemesh",
         "nameLocation": "281:8:8",
@@ -257,12 +257,12 @@
         "nodes": [
           {
             "constant": false,
-            "id": 1920,
+            "id": 1941,
             "mutability": "mutable",
             "name": "network",
             "nameLocation": "317:7:8",
             "nodeType": "VariableDeclaration",
-            "scope": 1948,
+            "scope": 1969,
             "src": "310:14:8",
             "stateVariable": true,
             "storageLocation": "default",
@@ -271,7 +271,7 @@
               "typeString": "string"
             },
             "typeName": {
-              "id": 1919,
+              "id": 1940,
               "name": "string",
               "nodeType": "ElementaryTypeName",
               "src": "310:6:8",
@@ -284,10 +284,10 @@
           },
           {
             "baseFunctions": [
-              1910
+              1931
             ],
             "body": {
-              "id": 1936,
+              "id": 1957,
               "nodeType": "Block",
               "src": "388:105:8",
               "statements": [
@@ -297,11 +297,11 @@
                       {
                         "arguments": [
                           {
-                            "id": 1928,
+                            "id": 1949,
                             "name": "network",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 1920,
+                            "referencedDeclaration": 1941,
                             "src": "424:7:8",
                             "typeDescriptions": {
                               "typeIdentifier": "t_string_storage",
@@ -317,32 +317,32 @@
                             }
                           ],
                           "expression": {
-                            "id": 1926,
+                            "id": 1947,
                             "name": "Utils",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 799,
+                            "referencedDeclaration": 815,
                             "src": "410:5:8",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_type$_t_contract$_Utils_$799_$",
+                              "typeIdentifier": "t_type$_t_contract$_Utils_$815_$",
                               "typeString": "type(library Utils)"
                             }
                           },
-                          "id": 1927,
+                          "id": 1948,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
                           "lValueRequested": false,
                           "memberName": "isEmpty",
                           "nodeType": "MemberAccess",
-                          "referencedDeclaration": 741,
+                          "referencedDeclaration": 757,
                           "src": "410:13:8",
                           "typeDescriptions": {
                             "typeIdentifier": "t_function_internal_pure$_t_string_memory_ptr_$returns$_t_bool_$",
                             "typeString": "function (string memory) pure returns (bool)"
                           }
                         },
-                        "id": 1929,
+                        "id": 1950,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -359,7 +359,7 @@
                       },
                       {
                         "expression": {
-                          "id": 1930,
+                          "id": 1951,
                           "name": "Constants",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
@@ -370,7 +370,7 @@
                             "typeString": "type(library Constants)"
                           }
                         },
-                        "id": 1931,
+                        "id": 1952,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -396,7 +396,7 @@
                           "typeString": "string memory"
                         }
                       ],
-                      "id": 1925,
+                      "id": 1946,
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
@@ -410,7 +410,7 @@
                         "typeString": "function (bool,string memory) pure"
                       }
                     },
-                    "id": 1932,
+                    "id": 1953,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -425,32 +425,32 @@
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 1933,
+                  "id": 1954,
                   "nodeType": "ExpressionStatement",
                   "src": "402:56:8"
                 },
                 {
                   "expression": {
-                    "id": 1934,
+                    "id": 1955,
                     "name": "network",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 1920,
+                    "referencedDeclaration": 1941,
                     "src": "479:7:8",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage",
                       "typeString": "string storage ref"
                     }
                   },
-                  "functionReturnParameters": 1924,
-                  "id": 1935,
+                  "functionReturnParameters": 1945,
+                  "id": 1956,
                   "nodeType": "Return",
                   "src": "472:14:8"
                 }
               ]
             },
             "functionSelector": "07e4b7e9",
-            "id": 1937,
+            "id": 1958,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
@@ -458,23 +458,23 @@
             "nameLocation": "340:10:8",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1921,
+              "id": 1942,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "350:2:8"
             },
             "returnParameters": {
-              "id": 1924,
+              "id": 1945,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1923,
+                  "id": 1944,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1937,
+                  "scope": 1958,
                   "src": "374:13:8",
                   "stateVariable": false,
                   "storageLocation": "memory",
@@ -483,7 +483,7 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 1922,
+                    "id": 1943,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
                     "src": "374:6:8",
@@ -497,7 +497,7 @@
               ],
               "src": "373:15:8"
             },
-            "scope": 1948,
+            "scope": 1969,
             "src": "331:162:8",
             "stateMutability": "view",
             "virtual": false,
@@ -505,26 +505,26 @@
           },
           {
             "baseFunctions": [
-              1915
+              1936
             ],
             "body": {
-              "id": 1946,
+              "id": 1967,
               "nodeType": "Block",
               "src": "548:35:8",
               "statements": [
                 {
                   "expression": {
-                    "id": 1944,
+                    "id": 1965,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
-                      "id": 1942,
+                      "id": 1963,
                       "name": "network",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 1920,
+                      "referencedDeclaration": 1941,
                       "src": "558:7:8",
                       "typeDescriptions": {
                         "typeIdentifier": "t_string_storage",
@@ -534,11 +534,11 @@
                     "nodeType": "Assignment",
                     "operator": "=",
                     "rightHandSide": {
-                      "id": 1943,
+                      "id": 1964,
                       "name": "networkC",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 1939,
+                      "referencedDeclaration": 1960,
                       "src": "568:8:8",
                       "typeDescriptions": {
                         "typeIdentifier": "t_string_memory_ptr",
@@ -551,14 +551,14 @@
                       "typeString": "string storage ref"
                     }
                   },
-                  "id": 1945,
+                  "id": 1966,
                   "nodeType": "ExpressionStatement",
                   "src": "558:18:8"
                 }
               ]
             },
             "functionSelector": "818edaec",
-            "id": 1947,
+            "id": 1968,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
@@ -566,17 +566,17 @@
             "nameLocation": "508:10:8",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1940,
+              "id": 1961,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1939,
+                  "id": 1960,
                   "mutability": "mutable",
                   "name": "networkC",
                   "nameLocation": "533:8:8",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1947,
+                  "scope": 1968,
                   "src": "519:22:8",
                   "stateVariable": false,
                   "storageLocation": "memory",
@@ -585,7 +585,7 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 1938,
+                    "id": 1959,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
                     "src": "519:6:8",
@@ -600,19 +600,19 @@
               "src": "518:24:8"
             },
             "returnParameters": {
-              "id": 1941,
+              "id": 1962,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "548:0:8"
             },
-            "scope": 1948,
+            "scope": 1969,
             "src": "499:84:8",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "public"
           }
         ],
-        "scope": 1949,
+        "scope": 1970,
         "src": "272:313:8",
         "usedErrors": []
       }
@@ -620,27 +620,27 @@
     "src": "36:549:8"
   },
   "legacyAST": {
-    "absolutePath": "/Users/shri99/WebProjects/sidecar-contract-kit/sidemesh-solidity/contracts/sidemesh/Sidemesh.sol",
+    "absolutePath": "project:/contracts/sidemesh/Sidemesh.sol",
     "exportedSymbols": {
       "Constants": [
         107
       ],
       "ISidemesh": [
-        1916
+        1937
       ],
       "Sidemesh": [
-        1948
+        1969
       ],
       "Utils": [
-        799
+        815
       ]
     },
-    "id": 1949,
+    "id": 1970,
     "license": "GPL-3.0",
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 1903,
+        "id": 1924,
         "literals": [
           "solidity",
           ">=",
@@ -654,24 +654,24 @@
         "src": "36:31:8"
       },
       {
-        "absolutePath": "/Users/shri99/WebProjects/sidecar-contract-kit/sidemesh-solidity/contracts/lib/Utils.sol",
+        "absolutePath": "project:/contracts/lib/Utils.sol",
         "file": "../lib/Utils.sol",
-        "id": 1904,
+        "id": 1925,
         "nameLocation": "-1:-1:-1",
         "nodeType": "ImportDirective",
-        "scope": 1949,
-        "sourceUnit": 800,
+        "scope": 1970,
+        "sourceUnit": 816,
         "src": "69:26:8",
         "symbolAliases": [],
         "unitAlias": ""
       },
       {
-        "absolutePath": "/Users/shri99/WebProjects/sidecar-contract-kit/sidemesh-solidity/contracts/lib/Constants.sol",
+        "absolutePath": "project:/contracts/lib/Constants.sol",
         "file": "../lib/Constants.sol",
-        "id": 1905,
+        "id": 1926,
         "nameLocation": "-1:-1:-1",
         "nodeType": "ImportDirective",
-        "scope": 1949,
+        "scope": 1970,
         "sourceUnit": 108,
         "src": "96:30:8",
         "symbolAliases": [],
@@ -684,9 +684,9 @@
         "contractDependencies": [],
         "contractKind": "interface",
         "fullyImplemented": false,
-        "id": 1916,
+        "id": 1937,
         "linearizedBaseContracts": [
-          1916
+          1937
         ],
         "name": "ISidemesh",
         "nameLocation": "138:9:8",
@@ -694,7 +694,7 @@
         "nodes": [
           {
             "functionSelector": "07e4b7e9",
-            "id": 1910,
+            "id": 1931,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
@@ -702,23 +702,23 @@
             "nameLocation": "162:10:8",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1906,
+              "id": 1927,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "172:2:8"
             },
             "returnParameters": {
-              "id": 1909,
+              "id": 1930,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1908,
+                  "id": 1929,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1910,
+                  "scope": 1931,
                   "src": "196:13:8",
                   "stateVariable": false,
                   "storageLocation": "memory",
@@ -727,7 +727,7 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 1907,
+                    "id": 1928,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
                     "src": "196:6:8",
@@ -741,7 +741,7 @@
               ],
               "src": "195:15:8"
             },
-            "scope": 1916,
+            "scope": 1937,
             "src": "153:58:8",
             "stateMutability": "view",
             "virtual": false,
@@ -749,7 +749,7 @@
           },
           {
             "functionSelector": "818edaec",
-            "id": 1915,
+            "id": 1936,
             "implemented": false,
             "kind": "function",
             "modifiers": [],
@@ -757,17 +757,17 @@
             "nameLocation": "225:10:8",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1913,
+              "id": 1934,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1912,
+                  "id": 1933,
                   "mutability": "mutable",
                   "name": "networkC",
                   "nameLocation": "250:8:8",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1915,
+                  "scope": 1936,
                   "src": "236:22:8",
                   "stateVariable": false,
                   "storageLocation": "memory",
@@ -776,7 +776,7 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 1911,
+                    "id": 1932,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
                     "src": "236:6:8",
@@ -791,19 +791,19 @@
               "src": "235:24:8"
             },
             "returnParameters": {
-              "id": 1914,
+              "id": 1935,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "267:0:8"
             },
-            "scope": 1916,
+            "scope": 1937,
             "src": "216:52:8",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "external"
           }
         ],
-        "scope": 1949,
+        "scope": 1970,
         "src": "128:142:8",
         "usedErrors": []
       },
@@ -812,13 +812,13 @@
         "baseContracts": [
           {
             "baseName": {
-              "id": 1917,
+              "id": 1938,
               "name": "ISidemesh",
               "nodeType": "IdentifierPath",
-              "referencedDeclaration": 1916,
+              "referencedDeclaration": 1937,
               "src": "293:9:8"
             },
-            "id": 1918,
+            "id": 1939,
             "nodeType": "InheritanceSpecifier",
             "src": "293:9:8"
           }
@@ -827,10 +827,10 @@
         "contractDependencies": [],
         "contractKind": "contract",
         "fullyImplemented": true,
-        "id": 1948,
+        "id": 1969,
         "linearizedBaseContracts": [
-          1948,
-          1916
+          1969,
+          1937
         ],
         "name": "Sidemesh",
         "nameLocation": "281:8:8",
@@ -838,12 +838,12 @@
         "nodes": [
           {
             "constant": false,
-            "id": 1920,
+            "id": 1941,
             "mutability": "mutable",
             "name": "network",
             "nameLocation": "317:7:8",
             "nodeType": "VariableDeclaration",
-            "scope": 1948,
+            "scope": 1969,
             "src": "310:14:8",
             "stateVariable": true,
             "storageLocation": "default",
@@ -852,7 +852,7 @@
               "typeString": "string"
             },
             "typeName": {
-              "id": 1919,
+              "id": 1940,
               "name": "string",
               "nodeType": "ElementaryTypeName",
               "src": "310:6:8",
@@ -865,10 +865,10 @@
           },
           {
             "baseFunctions": [
-              1910
+              1931
             ],
             "body": {
-              "id": 1936,
+              "id": 1957,
               "nodeType": "Block",
               "src": "388:105:8",
               "statements": [
@@ -878,11 +878,11 @@
                       {
                         "arguments": [
                           {
-                            "id": 1928,
+                            "id": 1949,
                             "name": "network",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 1920,
+                            "referencedDeclaration": 1941,
                             "src": "424:7:8",
                             "typeDescriptions": {
                               "typeIdentifier": "t_string_storage",
@@ -898,32 +898,32 @@
                             }
                           ],
                           "expression": {
-                            "id": 1926,
+                            "id": 1947,
                             "name": "Utils",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 799,
+                            "referencedDeclaration": 815,
                             "src": "410:5:8",
                             "typeDescriptions": {
-                              "typeIdentifier": "t_type$_t_contract$_Utils_$799_$",
+                              "typeIdentifier": "t_type$_t_contract$_Utils_$815_$",
                               "typeString": "type(library Utils)"
                             }
                           },
-                          "id": 1927,
+                          "id": 1948,
                           "isConstant": false,
                           "isLValue": false,
                           "isPure": false,
                           "lValueRequested": false,
                           "memberName": "isEmpty",
                           "nodeType": "MemberAccess",
-                          "referencedDeclaration": 741,
+                          "referencedDeclaration": 757,
                           "src": "410:13:8",
                           "typeDescriptions": {
                             "typeIdentifier": "t_function_internal_pure$_t_string_memory_ptr_$returns$_t_bool_$",
                             "typeString": "function (string memory) pure returns (bool)"
                           }
                         },
-                        "id": 1929,
+                        "id": 1950,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -940,7 +940,7 @@
                       },
                       {
                         "expression": {
-                          "id": 1930,
+                          "id": 1951,
                           "name": "Constants",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
@@ -951,7 +951,7 @@
                             "typeString": "type(library Constants)"
                           }
                         },
-                        "id": 1931,
+                        "id": 1952,
                         "isConstant": false,
                         "isLValue": false,
                         "isPure": false,
@@ -977,7 +977,7 @@
                           "typeString": "string memory"
                         }
                       ],
-                      "id": 1925,
+                      "id": 1946,
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
@@ -991,7 +991,7 @@
                         "typeString": "function (bool,string memory) pure"
                       }
                     },
-                    "id": 1932,
+                    "id": 1953,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
@@ -1006,32 +1006,32 @@
                       "typeString": "tuple()"
                     }
                   },
-                  "id": 1933,
+                  "id": 1954,
                   "nodeType": "ExpressionStatement",
                   "src": "402:56:8"
                 },
                 {
                   "expression": {
-                    "id": 1934,
+                    "id": 1955,
                     "name": "network",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 1920,
+                    "referencedDeclaration": 1941,
                     "src": "479:7:8",
                     "typeDescriptions": {
                       "typeIdentifier": "t_string_storage",
                       "typeString": "string storage ref"
                     }
                   },
-                  "functionReturnParameters": 1924,
-                  "id": 1935,
+                  "functionReturnParameters": 1945,
+                  "id": 1956,
                   "nodeType": "Return",
                   "src": "472:14:8"
                 }
               ]
             },
             "functionSelector": "07e4b7e9",
-            "id": 1937,
+            "id": 1958,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
@@ -1039,23 +1039,23 @@
             "nameLocation": "340:10:8",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1921,
+              "id": 1942,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "350:2:8"
             },
             "returnParameters": {
-              "id": 1924,
+              "id": 1945,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1923,
+                  "id": 1944,
                   "mutability": "mutable",
                   "name": "",
                   "nameLocation": "-1:-1:-1",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1937,
+                  "scope": 1958,
                   "src": "374:13:8",
                   "stateVariable": false,
                   "storageLocation": "memory",
@@ -1064,7 +1064,7 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 1922,
+                    "id": 1943,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
                     "src": "374:6:8",
@@ -1078,7 +1078,7 @@
               ],
               "src": "373:15:8"
             },
-            "scope": 1948,
+            "scope": 1969,
             "src": "331:162:8",
             "stateMutability": "view",
             "virtual": false,
@@ -1086,26 +1086,26 @@
           },
           {
             "baseFunctions": [
-              1915
+              1936
             ],
             "body": {
-              "id": 1946,
+              "id": 1967,
               "nodeType": "Block",
               "src": "548:35:8",
               "statements": [
                 {
                   "expression": {
-                    "id": 1944,
+                    "id": 1965,
                     "isConstant": false,
                     "isLValue": false,
                     "isPure": false,
                     "lValueRequested": false,
                     "leftHandSide": {
-                      "id": 1942,
+                      "id": 1963,
                       "name": "network",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 1920,
+                      "referencedDeclaration": 1941,
                       "src": "558:7:8",
                       "typeDescriptions": {
                         "typeIdentifier": "t_string_storage",
@@ -1115,11 +1115,11 @@
                     "nodeType": "Assignment",
                     "operator": "=",
                     "rightHandSide": {
-                      "id": 1943,
+                      "id": 1964,
                       "name": "networkC",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 1939,
+                      "referencedDeclaration": 1960,
                       "src": "568:8:8",
                       "typeDescriptions": {
                         "typeIdentifier": "t_string_memory_ptr",
@@ -1132,14 +1132,14 @@
                       "typeString": "string storage ref"
                     }
                   },
-                  "id": 1945,
+                  "id": 1966,
                   "nodeType": "ExpressionStatement",
                   "src": "558:18:8"
                 }
               ]
             },
             "functionSelector": "818edaec",
-            "id": 1947,
+            "id": 1968,
             "implemented": true,
             "kind": "function",
             "modifiers": [],
@@ -1147,17 +1147,17 @@
             "nameLocation": "508:10:8",
             "nodeType": "FunctionDefinition",
             "parameters": {
-              "id": 1940,
+              "id": 1961,
               "nodeType": "ParameterList",
               "parameters": [
                 {
                   "constant": false,
-                  "id": 1939,
+                  "id": 1960,
                   "mutability": "mutable",
                   "name": "networkC",
                   "nameLocation": "533:8:8",
                   "nodeType": "VariableDeclaration",
-                  "scope": 1947,
+                  "scope": 1968,
                   "src": "519:22:8",
                   "stateVariable": false,
                   "storageLocation": "memory",
@@ -1166,7 +1166,7 @@
                     "typeString": "string"
                   },
                   "typeName": {
-                    "id": 1938,
+                    "id": 1959,
                     "name": "string",
                     "nodeType": "ElementaryTypeName",
                     "src": "519:6:8",
@@ -1181,19 +1181,19 @@
               "src": "518:24:8"
             },
             "returnParameters": {
-              "id": 1941,
+              "id": 1962,
               "nodeType": "ParameterList",
               "parameters": [],
               "src": "548:0:8"
             },
-            "scope": 1948,
+            "scope": 1969,
             "src": "499:84:8",
             "stateMutability": "nonpayable",
             "virtual": false,
             "visibility": "public"
           }
         ],
-        "scope": 1949,
+        "scope": 1970,
         "src": "272:313:8",
         "usedErrors": []
       }
@@ -1205,8 +1205,8 @@
     "version": "0.8.9+commit.e5eed63a.Emscripten.clang"
   },
   "networks": {},
-  "schemaVersion": "3.3.3",
-  "updatedAt": "2021-11-11T13:56:42.215Z",
+  "schemaVersion": "3.4.1",
+  "updatedAt": "2021-11-13T07:54:06.440Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},
