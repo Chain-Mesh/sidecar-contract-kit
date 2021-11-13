@@ -63,6 +63,10 @@ library Structs{
         Enums.NetworkTransactionResponse response;
         bytes proof;
     }
+    
+    event NetworkTransactionResponseEvent(
+        NetworkTransactionResponse response
+    );
 
     event ResourceRegisteredEvent(
         URI uri,
