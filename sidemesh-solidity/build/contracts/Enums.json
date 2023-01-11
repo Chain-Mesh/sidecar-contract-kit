@@ -1,0 +1,915 @@
+{
+  "contractName": "Enums",
+  "abi": [],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.9+commit.e5eed63a\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/lib/Enums.sol\":\"Enums\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":1000},\"remappings\":[]},\"sources\":{\"project:/contracts/lib/Enums.sol\":{\"keccak256\":\"0x2e79e11edcc00c3c8d4ed6adb678f724ae18c232f9f5b6bba930a7899c766055\",\"license\":\"GPL-3.0\",\"urls\":[\"bzz-raw://a3c5727ddd64914395745042c7577df282f2469658138fd48cb9533044daba81\",\"dweb:/ipfs/QmThBk5PbPnM6C8hTJsPcgLyUKZ9zUGi5KFY8TogAv8sNV\"]}},\"version\":1}",
+  "bytecode": "0x60566037600b82828239805160001a607314602a57634e487b7160e01b600052600060045260246000fd5b30600052607381538281f3fe73000000000000000000000000000000000000000030146080604052600080fdfea264697066735822122093265dbf9b0406c3be7df545ac7c1694d0bcc3fcce609abee4f8ada96603604164736f6c63430008090033",
+  "deployedBytecode": "0x73000000000000000000000000000000000000000030146080604052600080fdfea264697066735822122093265dbf9b0406c3be7df545ac7c1694d0bcc3fcce609abee4f8ada96603604164736f6c63430008090033",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "69:571:2:-:0;;;;;;;;;;;;;;;-1:-1:-1;;;69:571:2;;;;;;;;;;;;;;;;;",
+  "deployedSourceMap": "69:571:2:-:0;;;;;;;;",
+  "source": "// SPDX-License-Identifier: GPL-3.0\npragma solidity >=0.7.0 <0.9.0;\n\nlibrary Enums{\n    enum ChainType{\n        FABRIC,\n        BESU\n    }\n\n    enum NetworkTransactionResponse{\n        SUCCESS,\n        FAILED\n    }\n\n    enum GlobalTransactionStatusType{\n        PRIMARY_TRANSACTION_PREPARED,\n        PRIMARY_TRANSACTION_COMMITTED,\n        PRIMARY_TRANSACTION_CANCELED\n    }\n\n    function checkCanceledOrCommiteded(uint status)internal pure returns(bool){\n        return status != uint(GlobalTransactionStatusType.PRIMARY_TRANSACTION_COMMITTED) &&\n            status != uint(GlobalTransactionStatusType.PRIMARY_TRANSACTION_CANCELED);\n    }\n}",
+  "sourcePath": "/home/rxshri99/WebProjects/sidecar-contract-kit/sidemesh-solidity/contracts/lib/Enums.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/lib/Enums.sol",
+    "exportedSymbols": {
+      "Enums": [
+        144
+      ]
+    },
+    "id": 145,
+    "license": "GPL-3.0",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 109,
+        "literals": [
+          "solidity",
+          ">=",
+          "0.7",
+          ".0",
+          "<",
+          "0.9",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "36:31:2"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "Enums",
+        "contractDependencies": [],
+        "contractKind": "library",
+        "fullyImplemented": true,
+        "id": 144,
+        "linearizedBaseContracts": [
+          144
+        ],
+        "name": "Enums",
+        "nameLocation": "77:5:2",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "canonicalName": "Enums.ChainType",
+            "id": 112,
+            "members": [
+              {
+                "id": 110,
+                "name": "FABRIC",
+                "nameLocation": "112:6:2",
+                "nodeType": "EnumValue",
+                "src": "112:6:2"
+              },
+              {
+                "id": 111,
+                "name": "BESU",
+                "nameLocation": "128:4:2",
+                "nodeType": "EnumValue",
+                "src": "128:4:2"
+              }
+            ],
+            "name": "ChainType",
+            "nameLocation": "93:9:2",
+            "nodeType": "EnumDefinition",
+            "src": "88:50:2"
+          },
+          {
+            "canonicalName": "Enums.NetworkTransactionResponse",
+            "id": 115,
+            "members": [
+              {
+                "id": 113,
+                "name": "SUCCESS",
+                "nameLocation": "185:7:2",
+                "nodeType": "EnumValue",
+                "src": "185:7:2"
+              },
+              {
+                "id": 114,
+                "name": "FAILED",
+                "nameLocation": "202:6:2",
+                "nodeType": "EnumValue",
+                "src": "202:6:2"
+              }
+            ],
+            "name": "NetworkTransactionResponse",
+            "nameLocation": "149:26:2",
+            "nodeType": "EnumDefinition",
+            "src": "144:70:2"
+          },
+          {
+            "canonicalName": "Enums.GlobalTransactionStatusType",
+            "id": 119,
+            "members": [
+              {
+                "id": 116,
+                "name": "PRIMARY_TRANSACTION_PREPARED",
+                "nameLocation": "262:28:2",
+                "nodeType": "EnumValue",
+                "src": "262:28:2"
+              },
+              {
+                "id": 117,
+                "name": "PRIMARY_TRANSACTION_COMMITTED",
+                "nameLocation": "300:29:2",
+                "nodeType": "EnumValue",
+                "src": "300:29:2"
+              },
+              {
+                "id": 118,
+                "name": "PRIMARY_TRANSACTION_CANCELED",
+                "nameLocation": "339:28:2",
+                "nodeType": "EnumValue",
+                "src": "339:28:2"
+              }
+            ],
+            "name": "GlobalTransactionStatusType",
+            "nameLocation": "225:27:2",
+            "nodeType": "EnumDefinition",
+            "src": "220:153:2"
+          },
+          {
+            "body": {
+              "id": 142,
+              "nodeType": "Block",
+              "src": "453:185:2",
+              "statements": [
+                {
+                  "expression": {
+                    "commonType": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    },
+                    "id": 140,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftExpression": {
+                      "commonType": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      },
+                      "id": 132,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "leftExpression": {
+                        "id": 126,
+                        "name": "status",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 121,
+                        "src": "470:6:2",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "nodeType": "BinaryOperation",
+                      "operator": "!=",
+                      "rightExpression": {
+                        "arguments": [
+                          {
+                            "expression": {
+                              "id": 129,
+                              "name": "GlobalTransactionStatusType",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 119,
+                              "src": "485:27:2",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_type$_t_enum$_GlobalTransactionStatusType_$119_$",
+                                "typeString": "type(enum Enums.GlobalTransactionStatusType)"
+                              }
+                            },
+                            "id": 130,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": true,
+                            "lValueRequested": false,
+                            "memberName": "PRIMARY_TRANSACTION_COMMITTED",
+                            "nodeType": "MemberAccess",
+                            "referencedDeclaration": 117,
+                            "src": "485:57:2",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_enum$_GlobalTransactionStatusType_$119",
+                              "typeString": "enum Enums.GlobalTransactionStatusType"
+                            }
+                          }
+                        ],
+                        "expression": {
+                          "argumentTypes": [
+                            {
+                              "typeIdentifier": "t_enum$_GlobalTransactionStatusType_$119",
+                              "typeString": "enum Enums.GlobalTransactionStatusType"
+                            }
+                          ],
+                          "id": 128,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "lValueRequested": false,
+                          "nodeType": "ElementaryTypeNameExpression",
+                          "src": "480:4:2",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_type$_t_uint256_$",
+                            "typeString": "type(uint256)"
+                          },
+                          "typeName": {
+                            "id": 127,
+                            "name": "uint",
+                            "nodeType": "ElementaryTypeName",
+                            "src": "480:4:2",
+                            "typeDescriptions": {}
+                          }
+                        },
+                        "id": 131,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "typeConversion",
+                        "lValueRequested": false,
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "480:63:2",
+                        "tryCall": false,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "src": "470:73:2",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    },
+                    "nodeType": "BinaryOperation",
+                    "operator": "&&",
+                    "rightExpression": {
+                      "commonType": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      },
+                      "id": 139,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "leftExpression": {
+                        "id": 133,
+                        "name": "status",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 121,
+                        "src": "559:6:2",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "nodeType": "BinaryOperation",
+                      "operator": "!=",
+                      "rightExpression": {
+                        "arguments": [
+                          {
+                            "expression": {
+                              "id": 136,
+                              "name": "GlobalTransactionStatusType",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 119,
+                              "src": "574:27:2",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_type$_t_enum$_GlobalTransactionStatusType_$119_$",
+                                "typeString": "type(enum Enums.GlobalTransactionStatusType)"
+                              }
+                            },
+                            "id": 137,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": true,
+                            "lValueRequested": false,
+                            "memberName": "PRIMARY_TRANSACTION_CANCELED",
+                            "nodeType": "MemberAccess",
+                            "referencedDeclaration": 118,
+                            "src": "574:56:2",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_enum$_GlobalTransactionStatusType_$119",
+                              "typeString": "enum Enums.GlobalTransactionStatusType"
+                            }
+                          }
+                        ],
+                        "expression": {
+                          "argumentTypes": [
+                            {
+                              "typeIdentifier": "t_enum$_GlobalTransactionStatusType_$119",
+                              "typeString": "enum Enums.GlobalTransactionStatusType"
+                            }
+                          ],
+                          "id": 135,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "lValueRequested": false,
+                          "nodeType": "ElementaryTypeNameExpression",
+                          "src": "569:4:2",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_type$_t_uint256_$",
+                            "typeString": "type(uint256)"
+                          },
+                          "typeName": {
+                            "id": 134,
+                            "name": "uint",
+                            "nodeType": "ElementaryTypeName",
+                            "src": "569:4:2",
+                            "typeDescriptions": {}
+                          }
+                        },
+                        "id": 138,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "typeConversion",
+                        "lValueRequested": false,
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "569:62:2",
+                        "tryCall": false,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "src": "559:72:2",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    },
+                    "src": "470:161:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "functionReturnParameters": 125,
+                  "id": 141,
+                  "nodeType": "Return",
+                  "src": "463:168:2"
+                }
+              ]
+            },
+            "id": 143,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "checkCanceledOrCommiteded",
+            "nameLocation": "388:25:2",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 122,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 121,
+                  "mutability": "mutable",
+                  "name": "status",
+                  "nameLocation": "419:6:2",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 143,
+                  "src": "414:11:2",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 120,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "414:4:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "413:13:2"
+            },
+            "returnParameters": {
+              "id": 125,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 124,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 143,
+                  "src": "448:4:2",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 123,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "448:4:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "447:6:2"
+            },
+            "scope": 144,
+            "src": "379:259:2",
+            "stateMutability": "pure",
+            "virtual": false,
+            "visibility": "internal"
+          }
+        ],
+        "scope": 145,
+        "src": "69:571:2",
+        "usedErrors": []
+      }
+    ],
+    "src": "36:604:2"
+  },
+  "legacyAST": {
+    "absolutePath": "project:/contracts/lib/Enums.sol",
+    "exportedSymbols": {
+      "Enums": [
+        144
+      ]
+    },
+    "id": 145,
+    "license": "GPL-3.0",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 109,
+        "literals": [
+          "solidity",
+          ">=",
+          "0.7",
+          ".0",
+          "<",
+          "0.9",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "36:31:2"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "Enums",
+        "contractDependencies": [],
+        "contractKind": "library",
+        "fullyImplemented": true,
+        "id": 144,
+        "linearizedBaseContracts": [
+          144
+        ],
+        "name": "Enums",
+        "nameLocation": "77:5:2",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "canonicalName": "Enums.ChainType",
+            "id": 112,
+            "members": [
+              {
+                "id": 110,
+                "name": "FABRIC",
+                "nameLocation": "112:6:2",
+                "nodeType": "EnumValue",
+                "src": "112:6:2"
+              },
+              {
+                "id": 111,
+                "name": "BESU",
+                "nameLocation": "128:4:2",
+                "nodeType": "EnumValue",
+                "src": "128:4:2"
+              }
+            ],
+            "name": "ChainType",
+            "nameLocation": "93:9:2",
+            "nodeType": "EnumDefinition",
+            "src": "88:50:2"
+          },
+          {
+            "canonicalName": "Enums.NetworkTransactionResponse",
+            "id": 115,
+            "members": [
+              {
+                "id": 113,
+                "name": "SUCCESS",
+                "nameLocation": "185:7:2",
+                "nodeType": "EnumValue",
+                "src": "185:7:2"
+              },
+              {
+                "id": 114,
+                "name": "FAILED",
+                "nameLocation": "202:6:2",
+                "nodeType": "EnumValue",
+                "src": "202:6:2"
+              }
+            ],
+            "name": "NetworkTransactionResponse",
+            "nameLocation": "149:26:2",
+            "nodeType": "EnumDefinition",
+            "src": "144:70:2"
+          },
+          {
+            "canonicalName": "Enums.GlobalTransactionStatusType",
+            "id": 119,
+            "members": [
+              {
+                "id": 116,
+                "name": "PRIMARY_TRANSACTION_PREPARED",
+                "nameLocation": "262:28:2",
+                "nodeType": "EnumValue",
+                "src": "262:28:2"
+              },
+              {
+                "id": 117,
+                "name": "PRIMARY_TRANSACTION_COMMITTED",
+                "nameLocation": "300:29:2",
+                "nodeType": "EnumValue",
+                "src": "300:29:2"
+              },
+              {
+                "id": 118,
+                "name": "PRIMARY_TRANSACTION_CANCELED",
+                "nameLocation": "339:28:2",
+                "nodeType": "EnumValue",
+                "src": "339:28:2"
+              }
+            ],
+            "name": "GlobalTransactionStatusType",
+            "nameLocation": "225:27:2",
+            "nodeType": "EnumDefinition",
+            "src": "220:153:2"
+          },
+          {
+            "body": {
+              "id": 142,
+              "nodeType": "Block",
+              "src": "453:185:2",
+              "statements": [
+                {
+                  "expression": {
+                    "commonType": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    },
+                    "id": 140,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftExpression": {
+                      "commonType": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      },
+                      "id": 132,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "leftExpression": {
+                        "id": 126,
+                        "name": "status",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 121,
+                        "src": "470:6:2",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "nodeType": "BinaryOperation",
+                      "operator": "!=",
+                      "rightExpression": {
+                        "arguments": [
+                          {
+                            "expression": {
+                              "id": 129,
+                              "name": "GlobalTransactionStatusType",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 119,
+                              "src": "485:27:2",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_type$_t_enum$_GlobalTransactionStatusType_$119_$",
+                                "typeString": "type(enum Enums.GlobalTransactionStatusType)"
+                              }
+                            },
+                            "id": 130,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": true,
+                            "lValueRequested": false,
+                            "memberName": "PRIMARY_TRANSACTION_COMMITTED",
+                            "nodeType": "MemberAccess",
+                            "referencedDeclaration": 117,
+                            "src": "485:57:2",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_enum$_GlobalTransactionStatusType_$119",
+                              "typeString": "enum Enums.GlobalTransactionStatusType"
+                            }
+                          }
+                        ],
+                        "expression": {
+                          "argumentTypes": [
+                            {
+                              "typeIdentifier": "t_enum$_GlobalTransactionStatusType_$119",
+                              "typeString": "enum Enums.GlobalTransactionStatusType"
+                            }
+                          ],
+                          "id": 128,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "lValueRequested": false,
+                          "nodeType": "ElementaryTypeNameExpression",
+                          "src": "480:4:2",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_type$_t_uint256_$",
+                            "typeString": "type(uint256)"
+                          },
+                          "typeName": {
+                            "id": 127,
+                            "name": "uint",
+                            "nodeType": "ElementaryTypeName",
+                            "src": "480:4:2",
+                            "typeDescriptions": {}
+                          }
+                        },
+                        "id": 131,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "typeConversion",
+                        "lValueRequested": false,
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "480:63:2",
+                        "tryCall": false,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "src": "470:73:2",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    },
+                    "nodeType": "BinaryOperation",
+                    "operator": "&&",
+                    "rightExpression": {
+                      "commonType": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      },
+                      "id": 139,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "leftExpression": {
+                        "id": 133,
+                        "name": "status",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 121,
+                        "src": "559:6:2",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "nodeType": "BinaryOperation",
+                      "operator": "!=",
+                      "rightExpression": {
+                        "arguments": [
+                          {
+                            "expression": {
+                              "id": 136,
+                              "name": "GlobalTransactionStatusType",
+                              "nodeType": "Identifier",
+                              "overloadedDeclarations": [],
+                              "referencedDeclaration": 119,
+                              "src": "574:27:2",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_type$_t_enum$_GlobalTransactionStatusType_$119_$",
+                                "typeString": "type(enum Enums.GlobalTransactionStatusType)"
+                              }
+                            },
+                            "id": 137,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": true,
+                            "lValueRequested": false,
+                            "memberName": "PRIMARY_TRANSACTION_CANCELED",
+                            "nodeType": "MemberAccess",
+                            "referencedDeclaration": 118,
+                            "src": "574:56:2",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_enum$_GlobalTransactionStatusType_$119",
+                              "typeString": "enum Enums.GlobalTransactionStatusType"
+                            }
+                          }
+                        ],
+                        "expression": {
+                          "argumentTypes": [
+                            {
+                              "typeIdentifier": "t_enum$_GlobalTransactionStatusType_$119",
+                              "typeString": "enum Enums.GlobalTransactionStatusType"
+                            }
+                          ],
+                          "id": 135,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": true,
+                          "lValueRequested": false,
+                          "nodeType": "ElementaryTypeNameExpression",
+                          "src": "569:4:2",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_type$_t_uint256_$",
+                            "typeString": "type(uint256)"
+                          },
+                          "typeName": {
+                            "id": 134,
+                            "name": "uint",
+                            "nodeType": "ElementaryTypeName",
+                            "src": "569:4:2",
+                            "typeDescriptions": {}
+                          }
+                        },
+                        "id": 138,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": true,
+                        "kind": "typeConversion",
+                        "lValueRequested": false,
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "569:62:2",
+                        "tryCall": false,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      },
+                      "src": "559:72:2",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_bool",
+                        "typeString": "bool"
+                      }
+                    },
+                    "src": "470:161:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "functionReturnParameters": 125,
+                  "id": 141,
+                  "nodeType": "Return",
+                  "src": "463:168:2"
+                }
+              ]
+            },
+            "id": 143,
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "checkCanceledOrCommiteded",
+            "nameLocation": "388:25:2",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 122,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 121,
+                  "mutability": "mutable",
+                  "name": "status",
+                  "nameLocation": "419:6:2",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 143,
+                  "src": "414:11:2",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 120,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "414:4:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "413:13:2"
+            },
+            "returnParameters": {
+              "id": 125,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 124,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 143,
+                  "src": "448:4:2",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 123,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "448:4:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "447:6:2"
+            },
+            "scope": 144,
+            "src": "379:259:2",
+            "stateMutability": "pure",
+            "virtual": false,
+            "visibility": "internal"
+          }
+        ],
+        "scope": 145,
+        "src": "69:571:2",
+        "usedErrors": []
+      }
+    ],
+    "src": "36:604:2"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.9+commit.e5eed63a.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.1",
+  "updatedAt": "2021-11-13T07:54:06.310Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}
